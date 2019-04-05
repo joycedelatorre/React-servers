@@ -4,7 +4,6 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Background from "./components/Background/Image/NASA.png";
 import Dashboard from "./components/Dashboard.jsx";
 
@@ -55,21 +54,18 @@ function AppRouter() {
   return (
     <Router>
       <div style={sectionStyle}>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand> Aruba Servers</Navbar.Brand>
- 
-          <Button variant="outline-primary">
-            <Link to="/">Home</Link>
-          </Button>
-          <Button variant="outline-primary">
-            <Link to="/logs/">Logs</Link>
-          </Button>
-          <Button variant="outline-primary">
-            <Link to="/users/">Users</Link>
-          </Button> 
-            
-          </Navbar>
-
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar.Brand> Aruba Servers</Navbar.Brand>    
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">      
+          
+              <Nav defaultActiveKey="/" className="flex-column">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/logs/">Logs</Nav.Link>
+                <Nav.Link href="/users/">Users</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>;
         <Route path="/" exact component={Index} />
         <Route path="/logs/" component={Logs} />
         <Route path="/users/" component={Users} />
