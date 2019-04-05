@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Background from "./components/Background/Image/NASA.png";
@@ -39,7 +40,19 @@ const sectionStyle = {
 
 
 function Index() {
-  return <h2>Home</h2>;
+  return (
+
+    <Card bg="primary" text="white" style={{ top:20, left: 50, width: '18rem', opacity:'0.9' }}>
+    <Card.Header>DC 1</Card.Header>
+    <Card.Body>
+      <Card.Title>Location: US West</Card.Title>
+      <Card.Text>
+        Last time its checked
+      </Card.Text>
+    </Card.Body>
+  </Card>
+
+  );
 }
 
 function Logs() {
@@ -55,22 +68,20 @@ function AppRouter() {
     <Router>
       <div style={sectionStyle}>
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand> Aruba Servers</Navbar.Brand>    
+            <Navbar.Brand> <Nav.Link href="/">Aruba servers</Nav.Link></Navbar.Brand>    
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">      
-          
               <Nav defaultActiveKey="/" className="flex-column">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/logs/">Logs</Nav.Link>
                 <Nav.Link href="/users/">Users</Nav.Link>
               </Nav>
             </Navbar.Collapse>
-          </Navbar>;
+          </Navbar>
         <Route path="/" exact component={Index} />
         <Route path="/logs/" component={Logs} />
         <Route path="/users/" component={Users} />
-      </div>
-      
+      </div> 
     </Router>
   );
 }
